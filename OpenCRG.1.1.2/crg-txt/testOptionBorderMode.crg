@@ -1,0 +1,65 @@
+* Emacs major mode to be selected automagically: -*-CASCaDE-*-
+$CT                                                 ! comment text block
+CRG file example (with options and) reference to the effective CRG file.
+
+This (incomplete) CRG file defines a reference to a further CRG file,
+which will be evaluated for
+- CRG options for runtime evaluation, if not already defined here
+- CRG basic data (header, reference line, evaluation grid, ...)
+
+Copyright 2009 OpenCRG - VIRES GmbH - Marius Dupuis
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+More Information on OpenCRG open file formats and tools can be found at
+
+    http://www.opencrg.org
+
+$!**********************************************************************
+$ROAD_CRG_FILE                                      ! crg file reference
+* The file name may be split to multiple lines, which must not contain
+* leading/trailing blanks, *, or ! to be considered as part of the name.
+* Each line length must not exceed 72 characters.
+* If a relative path is given, it is evaluated relative to the current
+* directory of the reader process.
+* If the first character is a $, subsequent characters will be replaced
+* by the contents of the equivalent environment variable.
+
+    ../../../crg-txt/handmade_sloped_opt.crg
+
+$!**********************************************************************
+$ROAD_CRG_MODS                        ! crg runtime evaluation modifiers
+* A modifier block in this file will substitute the complete modifier
+* block in the referenced CRG file.
+* An empty option block does this as well, such that any option
+* defined in the referenced CRG file will be ignored.
+$!**********************************************************************
+$ROAD_CRG_OPTS                          ! crg runtime evaluation options
+*
+* BORDER_MODE_U = 0             ! return NaN
+* BORDER_MODE_U = 1             ! set zero
+  BORDER_MODE_U = 2             ! keep last (default)
+* BORDER_MODE_U = 3             ! repeat
+  BORDER_OFFSET_U = 1.0         ! z offset beyond border (default: 0)
+*
+* BORDER_MODE_V = 0             ! return NaN
+* BORDER_MODE_V = 1             ! set zero
+  BORDER_MODE_V = 2             ! keep last (default)
+* BORDER_MODE_V = 3             ! repeat
+  BORDER_OFFSET_V = 1.0         ! z offset beyond border (default: 0)
+*
+* An option block in this file will substitute the complete option block
+* in the referenced CRG file.
+* An empty option block does this as well, such that any option
+* defined in the referenced CRG file will be ignored.
+$!**********************************************************************

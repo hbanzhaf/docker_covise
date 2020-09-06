@@ -1,0 +1,19 @@
+version: "3"
+services:
+  docker-covise:
+    image: docker-covise
+    network_mode: host
+    volumes: 
+      - $HOME/.Xauthority:$HOME/.Xauthority
+      - $HOME/Downloads:$HOME/Downloads
+
+    environment:
+      - DISPLAY=$DISPLAY
+      - HOST_UID=$UID
+      - HOST_GID=$GID
+      - DOCKER_USER=docker
+      - DOCKER_HOME=$HOME
+
+    working_dir: $HOME
+
+    privileged: true

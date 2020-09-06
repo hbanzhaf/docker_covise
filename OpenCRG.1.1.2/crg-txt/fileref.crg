@@ -1,0 +1,61 @@
+* Emacs major mode to be selected automagically: -*-CASCaDE-*-
+* $Id: fileref.crg 164 2010-03-22 07:17:58Z jorauh $
+$CT                                                 ! comment text block
+CRG file example with a reference to the effective CRG file, defining
+empty mods and opts.
+
+This (incomplete) CRG file defines a reference to a further CRG file,
+which will be evaluated for
+- CRG modifiers for runtime evaluation, if not blank defined as below
+- CRG options for runtime evaluation, if not blank defined as below
+- CRG basic data (header, reference line, evaluation grid, ...)
+
+Copyright 2005-2009 OpenCRG - Daimler AG - Jochen Rauh
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+More Information on OpenCRG open file formats and tools can be found at
+
+    http://www.opencrg.org
+$!**********************************************************************
+$ROAD_CRG_FILE                                      ! crg file reference
+* The file name may be split to multiple lines, which must not contain
+* leading/trailing blanks, *, or ! to be considered as part of the name.
+* Each line length must not exceed 72 characters.
+* If a relative path is given, it is evaluated relative to the current
+* directory of the reader process.
+* If the first character is a $, subsequent characters will be replaced
+* by the contents of the equivalent environment variable.
+*
+* > /home/name/crg-files/handmade_straight.crg  ! absolute path
+*
+* > /home/name/crg-files/hand                   ! absolute path
+* >  made_straight.crg                          ! split in 2 lines
+*
+* > $crgpath/handmake_straight.crg              ! replace $crgpath by
+* >                                             ! it's envvar contents
+*
+  ../crg-txt/handmade_curved_banked_sloped.crg  ! relative path
+$!**********************************************************************
+$ROAD_CRG_MODS                        ! crg runtime evaluation modifiers
+* A modifier block in this file will substitute the complete modifier
+* block in the referenced CRG file.
+* This empty option block does this as well, such that any option
+* defined in the referenced CRG file will be ignored.
+$!**********************************************************************
+$ROAD_CRG_OPTS                          ! crg runtime evaluation options
+* An option block in this file will substitute the complete option block
+* in the referenced CRG file.
+* This empty option block does this as well, such that any option
+* defined in the referenced CRG file will be ignored.
+$!**********************************************************************

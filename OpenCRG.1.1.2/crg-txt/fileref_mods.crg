@@ -1,0 +1,72 @@
+* Emacs major mode to be selected automagically: -*-CASCaDE-*-
+* $Id: fileref_mods.crg 152 2010-02-11 12:08:22Z jorauh $
+$CT                                                 ! comment text block
+CRG file example with a reference to the effective CRG file, defining
+default mods for illustration.
+
+This (incomplete) CRG file defines a reference to a further CRG file,
+which will be evaluated for
+- CRG options for runtime evaluation
+- CRG basic data (header, reference line, evaluation grid, ...)
+
+Copyright 2005-2009 OpenCRG - Daimler AG - Jochen Rauh
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+More Information on OpenCRG open file formats and tools can be found at
+
+    http://www.opencrg.org
+$!**********************************************************************
+$ROAD_CRG_FILE                                      ! crg file reference
+ ../crg-txt/handmade_curved_banked_sloped.crg      ! look in crg-txt dir
+$!**********************************************************************
+$ROAD_CRG_MODS                        ! crg runtime evaluation modifiers
+*
+* CRG scaling (default: no scaling)
+* - scale elevation data
+* SCALE_Z_GRID = 1          ! scale elevation grid
+* SCALE_SLOPE = 1           ! scale slope information
+* SCALE_BANKING = 1         ! scale banking information
+* - scale refline data (resets refline start position to origin)
+* SCALE_LENGTH = 1          ! scale u information
+* SCALE_WIDTH = 1           ! scale v information
+* SCALE_CURVATURE = 1       ! scale reference line's curvature
+*
+* CRG elevation grid NaN handling
+* GRID_NAN_MODE = 0         ! keep NaN
+* GRID_NAN_MODE = 1         ! set zero
+  GRID_NAN_MODE = 2         ! keep last value in cross section (default)
+  GRID_NAN_OFFSET = 0       ! z offset to be applied for NaNs (def: 0)
+*
+* CRG re-positioning: refline by offset (default: "by refpoint")
+* REFLINE_OFFSET_X = 0      ! translate by rlox
+* REFLINE_OFFSET_Y = 0      ! translate by rloy
+* REFLINE_OFFSET_Z = 0      ! translate by rloz
+* REFLINE_OFFSET_PHI = 0    ! rotate by rlop around (xbeg, ybeg)
+*
+* CRG re-positioning: refline by refpoint (overwrites "by offset")
+* position (u,v) on reference line:
+  REFPOINT_U_FRACTION = 0   ! relative u (default: 0)
+* REFPOINT_U = ?            !   or: absolute u
+  REFPOINT_U_OFFSET = 0     ! offset (default: 0)
+*
+  REFPOINT_V = 0            ! absolute v (default: 0)
+* REFPOINT_V_FRACTION = ?   !   or: relative v
+* REFPOINT_V_OFFSET = 0     ! offset (default: 0)
+*
+* position (x,y,z) and orientation (phi) in inertial frame:
+  REFPOINT_X = 0            ! target position (default: 0)
+  REFPOINT_Y = 0            ! target position (default: 0)
+  REFPOINT_Z = 0            ! target position (default: 0)
+  REFPOINT_PHI = 0          ! target orientation (default: 0)
+$!**********************************************************************
